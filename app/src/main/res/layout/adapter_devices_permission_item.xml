@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:paddingTop="3dip"
+    android:paddingBottom="3dip"
+     >
+    <TextView 
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/xlarge_text_size"
+        android:textColor="#999999"
+        android:text="Yang wen"
+        />
+	<TextView 
+        android:id="@+id/tv_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="4dip"
+        android:textSize="@dimen/normal_text_size"
+        android:text="Yang wen"
+        />
+	<!-- <Button 
+	    android:id="@+id/btn_settings"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerVertical="true"
+	    android:layout_alignParentRight="true"
+	    android:text="设置"
+	    /> -->
+	<ImageView 
+        android:id="@+id/setting"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:padding="10dip"
+       	android:layout_alignParentRight="true"
+       	android:layout_centerVertical="true"
+       	android:layout_marginRight="10dip"
+        android:src="@drawable/icon_setting"
+        />
+</RelativeLayout>

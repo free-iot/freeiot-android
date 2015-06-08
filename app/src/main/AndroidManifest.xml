@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pandocloud.freeiot" >
+
+    <!-- sdk必要权限 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        tools:replace="android:icon,android:theme"
+        android:name="com.pandocloud.freeiot.ui.app.FreeIOTApp"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true">
+        <activity
+            android:name="com.pandocloud.freeiot.ui.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.login.RegisterActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.login.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.login.ResetPwdActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.login.EmailRegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.pandocloud.freeiot.ui.login.EmailLoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.login.EmailResetPwdActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.pandocloud.freeiot.ui.device.config.GateWayConfigActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.pandocloud.freeiot.ui.device.DeviceAuthActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.device.DeviceInfoModifyActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+        android:name="com.pandocloud.freeiot.ui.device.DevicePermissionModifyActivity"
+        android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.device.DevicePermissionsListActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.device.DeviceControlActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity
+            android:name="com.pandocloud.freeiot.ui.urlconfig.UrlConfigActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <!-- sdk -->
+        <service
+            android:name="com.pandocloud.android.config.ConnectDeviceService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- umeng update -->
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <meta-data android:name="UMENG_APPKEY" android:value="55707afd67e58efb7a001e21"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="baidu" />
+    </application>
+
+</manifest>

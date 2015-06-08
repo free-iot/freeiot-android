@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/top_rl"
+        android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:background="#e74848" >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:padding="14dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/back"
+            />
+
+        <!-- 中间title -->
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/device_auth_list"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+        
+        <TextView
+            android:id="@+id/txt_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/title"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:gravity="bottom"
+            android:paddingLeft="10dp"
+            android:paddingRight="14dip"
+            android:text="@string/auth"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+        <TextView 
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@id/txt_add"
+            android:layout_alignParentRight="true"
+            android:gravity="fill"
+            android:clickable="true"
+            android:text=" "
+            />
+    </RelativeLayout>
+	<android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ListView 
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:listSelector="#00000000"
+        ></ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

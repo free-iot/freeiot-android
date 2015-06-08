@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xwalk_core_library_java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/xwalk_core_library/libs/xwalk_core_library_java.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

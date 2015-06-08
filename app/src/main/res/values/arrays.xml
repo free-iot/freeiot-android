@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="error_code_msg">
+        <item>load failed.</item>
+        <item>Vendor key is\'t right</item>
+        <item>Product key is\'t right</item>
+        <item>Device key is\'t right</item>
+        <item>Device identifier is\'t right</item>
+        <item>No operating authority</item>
+        <item>Unknown command</item>
+        <item>Command parameter is\'t right</item>
+        <item>Send command error, please try again</item>
+        <item>Please loign</item>
+        <item>The device not exists</item>
+        <item>Your password is not right</item>
+        <item>The mobile has been registered,just login directly</item>
+        <item>Verification code has expired, please re-acquisition</item>
+        <item>Verification code error, please re-confirm</item>
+        <item>The account is not available</item>
+        <item>Unknown attribute</item>
+        <item>Device is offline</item>
+        <item>Request format is incorrect</item>
+        <item>The deivce has been bound, unbind it first before bind again.</item>
+        <item>Lack product key or vendor key</item>
+    </string-array>
+
+    <integer-array name="error_code">
+        <item>10001</item>
+        <item>10002</item>
+        <item>10003</item>
+        <item>10004</item>
+        <item>10005</item>
+        <item>10006</item>
+        <item>10007</item>
+        <item>10008</item>
+        <item>10009</item>
+        <item>10010</item>
+        <item>10011</item>
+        <item>10012</item>
+        <item>10013</item>
+        <item>10014</item>
+        <item>10015</item>
+        <item>10016</item>
+        <item>10017</item>
+        <item>10018</item>
+        <item>10019</item>
+        <item>10020</item>
+        <item>10021</item>
+    </integer-array>
+
+    <string-array name="deivce_owner_setting">
+        <item >Modify device info</item>
+        <item >Device binding permissions</item>
+        <item >Unbind</item>
+    </string-array>
+
+    <string-array name="device_not_owner_setting">
+        <item >Modify device info</item>
+        <item >Delete device</item>
+    </string-array>
+</resources>

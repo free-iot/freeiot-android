@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="error_code_msg">
+        <item>加载失败</item>
+        <item>vendor key错误</item>
+        <item>product key错误</item>
+        <item>device key错误</item>
+        <item>device标识符错误</item>
+        <item>暂无操作权限</item>
+        <item>未知指令</item>
+        <item>指令参数错误</item>
+        <item>发送指令出错，请重试</item>
+        <item>请重新登录</item>
+        <item>设备不存在</item>
+        <item>密码错误，请重新登录</item>
+        <item>该手机号已注册，请直接登录</item>
+        <item>验证码已过期，请重新获取</item>
+        <item>验证码错误，请重新确认</item>
+        <item>账号无效，请确认该账号存在</item>
+        <item>未知属性</item>
+        <item>设备已离线</item>
+        <item>请求格式不正确</item>
+        <item>设备已绑定，解绑后才能再次绑定</item>
+        <item>缺少product key或vendor key</item>
+    </string-array>
+
+    <integer-array name="error_code">
+        <item>10001</item>
+        <item>10002</item>
+        <item>10003</item>
+        <item>10004</item>
+        <item>10005</item>
+        <item>10006</item>
+        <item>10007</item>
+        <item>10008</item>
+        <item>10009</item>
+        <item>10010</item>
+        <item>10011</item>
+        <item>10012</item>
+        <item>10013</item>
+        <item>10014</item>
+        <item>10015</item>
+        <item>10016</item>
+        <item>10017</item>
+        <item>10018</item>
+        <item>10019</item>
+        <item>10020</item>
+        <item>10021</item>
+    </integer-array>
+
+    <string-array name="deivce_owner_setting">
+        <item >修改设备信息</item>
+        <item >设备授权管理</item>
+        <item >解除绑定</item>
+    </string-array>
+
+    <string-array name="device_not_owner_setting">
+        <item >修改设备信息</item>
+        <item >删除设备</item>
+    </string-array>
+</resources>

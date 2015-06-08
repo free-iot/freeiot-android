@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.0"
+
+    defaultConfig {
+        applicationId "com.pandocloud.freeiot"
+        minSdkVersion 8
+        targetSdkVersion 22
+        versionCode 3
+        versionName "0.1.1"
+    }
+
+    signingConfigs {
+        debug {
+//            storeFile file("debug.keystore")
+        }
+        myConfig {
+            storeFile file("pandocloud.keystore")
+            storePassword "pandocloud"
+            keyAlias "pandocloud"
+            keyPassword "pandocloud2015"
+        }
+    }
+
+    sourceSets.main {
+        jni.srcDirs = [] // This prevents the auto generation of Android.mk
+        jniLibs.srcDir 'libs' // This is not necessary unless you have precompiled libraries in your project.
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.myConfig
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/umeng-analytics-v5.4.2.jar')
+    compile files('libs/umeng-update-v2.6.0.1.jar')
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.loopj.android:android-async-http:1.4.6'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+    compile 'com.android.support:support-v4:22.0.0'
+    compile project(':xwalk_core_library')
+}

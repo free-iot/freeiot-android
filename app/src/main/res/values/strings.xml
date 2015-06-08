@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FreeIOT</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Sign in</string>
+    <string name="login2">SIGN IN</string>
+    <string name="register">Sign up</string>
+    <string name="register2">SIGN UP</string>
+    <string name="phone_number">Phone number</string>
+    <string name="vertification_code">Vertification code</string>
+    <string name="password">Password</string>
+    <string name="new_password">New password</string>
+    <string name="forget_pwd">Forget password?</string>
+    <string name="reset_pwd">Reset password</string>
+    <string name="ap_connect">Find device</string>
+    <string name="my_devices">My devices</string>
+    <string name="add">Add</string>
+    <string name="logout">Sign out</string>
+    <string name="password_again">Enter password again</string>
+    <string name="email">Email</string>
+    <string name="open_wifi_tip">Need to open wifi, set wifi state？</string>
+    <string name="find_devices">Find device</string>
+    <string name="device_online_setting">Device online config</string>
+    <string name="device_oauth_settings">Authorization setting</string>
+    <string name="tip_wifi_picker">Select a internet accessiable wifi:</string>
+    <string name="tip_wifi_pwd">Input wifi password:</string>
+    <string name="ok2">Ok</string>
+    <string name="exit_config">Exit config</string>
+    <string name="tip_device_auth_mobile">Input Device authorized phone number:</string>
+    <string name="tip_device_auth">Authoration permission settings:</string>
+    <string name="tip_auth_read_only">Only receive notification</string>
+    <string name="tip_auth_read_write">Control device </string>
+    <string name="auth_ok">Authorize</string>
+    <string name="loading">Loading...</string>
+    <string name="device_name_format" formatted="false">%s(%s)</string>
+    <string name="unbinding_success">Unbind success</string>
+    <string name="unbinding_failed">Unbind failed</string>
+    <!-- code -->
+    <!-- register -->
+    <string name="error_empty_mobile">Mobile required</string>
+    <string name="error_mobile_format">Mobile error</string>
+    <string name="error_empty_authcode">Verification code required</string>
+    <string name="error_empty_pwd">Password required</string>
+    <string name="send_authcode_success">Verification code sent successfully</string>
+    <string name="send_authcode_failed">Failed to send Verification code</string>
+    <string name="get_authcode">Vertification code</string>
+    <string name="reget_authcode">Retry%ds later</string>
+    <string name="registering">Sign in…</string>
+    <string name="register_success">Sign in success</string>
+    <string name="register_failed">Sign in failed</string>
+    <string name="reset_pwd_success">Reset password successfully</string>
+    <string name="reset_pwd_failed">Reset password failed</string>
+    <!-- email register -->
+    <string name="error_email_empty">Email required</string>
+    <string name="again_pwd_empty">Confirm password required</string>
+    <string name="pwd_not_equal">The two passwords do not match</string>
+    <string name="email_vertify_code_send">Check your email to get vertification code</string>
+    <!-- login -->
+    <string name="login_success">Login successfully</string>
+    <string name="login_failed">Login failed</string>
+    <string name="error_login_pwd_empty">Password required</string>
+    <string name="logining">Sign in...</string>
+    <!-- gateway config -->
+    <string name="scaning_devices">Searching for devices nearby...</string>
+    <string name="tip_not_found_devices">No devices found, try again？</string>
+    <!-- device auth -->
+    <string name="settings">Setting</string>
+    <string name="device_auth_success">Device authorization Success</string>
+    <string name="auth">Authorize</string>
+    <string name="error_auth_phone_empty">Authorized to user\'s phone number is required</string>
+    <string name="unbinding">Unbind</string>
+    <string name="warn">Warn</string>
+    <string name="unbinding_tip">After unbinding,you and your authorized users will lose the authority to operate device</string>
+    <string name="wifi_no_pwd_tip">Confirm wifi hotspots %s has no password set?</string>
+    <string name="configing">Configing, please wait a moment</string>
+    <string name="config_success">Config successfully,uploading data...</string>
+    <string name="config_failed">Config failed, confirm wifi is available and the password is right. </string>
+    <!-- 网络错误提示 -->
+    <string name="http_error_message">Network request an exception,verify the network connection is working and try again</string>
+    <string name="http_server_error">Server seemed deserted, please try again later</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

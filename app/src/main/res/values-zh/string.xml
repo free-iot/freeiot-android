@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FreeIOT</string>
+    <string name="login">登录</string>
+    <string name="login2">登\t录</string>
+    <string name="register">注册</string>
+    <string name="register2">注\t册</string>
+    <string name="phone_number">手机号码</string>
+    <string name="vertification_code">验证码</string>
+    <string name="password">密码</string>
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="reset_pwd">重置密码</string>
+    <string name="change_pwd">修改密码</string>
+    <string name="ap_connect">搜索设备</string>
+    <string name="my_devices">我的设备</string>
+    <string name="add">添加</string>
+    <string name="logout">退出账号</string>
+    
+    <string name="password_again">再次输入密码</string>
+    <string name="email">邮箱</string>
+    
+    <string name="open_wifi_tip">应用程序需要wifi打开，是否设置wifi状态？</string>
+    <string name="find_devices">查找设备</string>
+    <string name="device_online_setting">设备上网配置</string>
+    <string name="color_light_setting">三色灯设置</string>
+    <string name="device_oauth_settings">设备授权设置</string>
+    <string name="tip_wifi_picker">请设置能够让设备上网的wifi：</string>
+    <string name="tip_wifi_pwd">请输入该wifi上网的密码：</string>
+    <string name="ok2">确\t定</string>
+    <string name="exit_config">退出配置</string>
+    <string name="tip_device_auth_mobile">请输入设备授权者的手机号码 :</string>
+    <string name="tip_device_auth">授权权限设置 :</string>
+    <string name="tip_auth_read_only">只接收消息通知</string>
+    <string name="tip_auth_read_write">操控设备并且接收消息通知</string>
+    <string name="auth_ok">确定授权</string>
+    <string name="loading">加载中...</string>
+    <string name="device_name_format" formatted="false">%s(%s)</string>
+    <string name="unbinding_success">解绑成功</string>
+    <string name="unbinding_failed">解绑失败，请重试</string>
+    <string name="device_info_modify">设备信息修改</string>
+    <string name="device_name">设备名称</string>
+    <string name="device_secure_settings">设备绑定权限设置</string>
+    <string name="devece_secure_level1">不需解绑即可重新绑定</string>
+    <string name="devece_secure_level2">必须解绑才可以重新绑定</string>
+    <string name="error_deivce_name_empty">设备名不能为空</string>
+    <string name="device_info_uploading">设备信息提交中...</string>
+    <string name="device_info_modify_success">设备信息修改成功</string>
+    <string name="device_auth_list">设备授权列表</string>
+    <string name="device_auth_delete">删除设备授权</string>
+    <string name="device_auth_modify">修改设备授权</string>
+    <string name="device_delete_success">删除设备成功</string>
+    <string name="device_permission_modify_success">权限修改成功</string>
+    <string name="device_delete_tip">删除之后，您将失去该设备的访问权限</string>
+    <string name="auth_delete_tip">删除之后，该用户将失去该设备的访问权限</string>
+    
+    <!-- code -->
+    <!-- register -->
+    <string name="error_empty_mobile">手机号码不能为空</string>
+    <string name="error_mobile_format">手机号格式错误</string>
+    <string name="error_empty_authcode">验证码不能为空</string>
+    <string name="error_empty_pwd">密码不能为空</string>
+    <string name="send_authcode_success">验证码已发送，请查看手机短信</string>
+    <string name="send_authcode_failed">验证码发送失败，请重试</string>
+    <string name="get_authcode">获取验证码</string>
+    <string name="reget_authcode">%ds后重新获取</string>
+    <string name="registering">注册中&#8230;</string>
+    <string name="register_success">注册成功</string>
+    <string name="register_failed">注册失败</string>
+    <string name="reset_pwd_success">重置密码成功</string>
+    <string name="reset_pwd_failed">重置密码失败，请重试</string>
+    <string name="error_empty_old_pwd">旧密码不能为空</string>
+    <string name="error_empty_new_pwd">新密码不能为空</string>
+    <string name="change_pwd_success">修改密码成功</string>
+    <string name="change_pwd_failed">修改密码失败</string>
+    <!-- email register -->
+    <string name="error_email_empty">邮箱不能为空</string>
+    <string name="again_pwd_empty">确认密码不能为空</string>
+    <string name="pwd_not_equal">两次密码不一致</string>
+    <string name="email_vertify_code_send">验证码已发送到邮箱，请查收</string>
+    
+    <!-- login -->
+    <string name="login_success">登录成功</string>
+    <string name="login_failed">登录失败</string>
+    <string name="error_login_pwd_empty">登录密码不能为空</string>
+    <string name="logining">登录中...</string>
+    <!-- gateway config -->
+    <string name="scaning_devices">正在搜索附近的设备...</string>
+    <string name="tip_not_found_devices">暂未发现可配置的设备，是否继续检查尝试？</string>
+    <!-- device auth -->
+    <string name="settings">设置</string>
+    <string name="device_auth_success">设备授权成功</string>
+    
+    <string name="auth">授权</string>
+    <string name="error_auth_phone_empty">授权给用户手机号码不能为空哦</string>
+    <string name="unbinding">解绑</string>
+    <string name="warn">警告</string>
+    <string name="unbinding_tip">解除绑定之后，您和您授权的用户都将失去操作权限</string>
+    
+    <string name="wifi_no_pwd_tip">确认wifi热点%s无密码设置？</string>
+    <string name="configing">正在配置，请稍等...</string>
+    <string name="config_success">配置成功，数据上传中...</string>
+    <string name="config_failed">配置失败，请确定wifi ssid和wifi密码是否可用</string>
+    <!-- 网络错误提示 -->
+    <string name="http_error_message">网络请求异常，请确认网络连接正常后再重试</string>
+    <string name="http_server_error">服务器开小差了，请稍后重试</string>  
+</resources>
