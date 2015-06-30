@@ -86,7 +86,7 @@ public class UrlConfigManager {
 	}
 	
 	public static final class PreProductUrlConfig {
-		public static final String API_HOST_PRE_URL = "https://testapi.pandocloud.com";
+		public static final String API_HOST_PRE_URL = "https://stageapi.pandocloud.com";
 	}
 	
 	public static final class ReleaseUrlConfig {
