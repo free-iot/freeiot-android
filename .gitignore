@@ -29,3 +29,4 @@ proguard/
 # Mac Files
 .DS_Store
 .idea/libraries
+.idea/workspace.xml
