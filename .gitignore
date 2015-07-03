@@ -28,3 +28,4 @@ proguard/
 
 # Mac Files
 .DS_Store
+.idea/libraries
