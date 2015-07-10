@@ -43,8 +43,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.pandocloud.android.api.AbsOpenApi;
-import com.pandocloud.android.config.GateWayConfigManager;
-import com.pandocloud.android.config.handler.GateWayMsgHandler;
+import com.pandocloud.android.config.wifi.WifiConfigManager;
+import com.pandocloud.android.config.wifi.WifiConfigMessageHandler;
 import com.pandocloud.android.utils.WifiConnectUtil;
 import com.pandocloud.freeiot.R;
 import com.pandocloud.freeiot.api.DevicesApi;
@@ -75,8 +75,6 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 	private Button btnConfig;
 	
 	private SSIDAdapter adapter;
-
-    private PopupWindow mPopupWindow;
 	
 	private List<ScanResult> scanResults;
 	
@@ -84,18 +82,16 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 	
 	private WifiConnectUtil wifiConnectUtil;
 	
-	private String apSSID; //AP wifi ssid
-	
 	private String ssid;
 	
 	private String pwd; // wifi network pwd
-	
-	private GateWayMsgHandler msgHandler;
+
+	private WifiConfigMessageHandler msgHandler;
 	
 	private String deviceKey;
 	
 	private Timer timer;
-	
+
 	private int refreshTimeDex = 3000;
 	
 	private WakeLock wakeLock;
@@ -104,25 +100,25 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 	private Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
-			case GateWayConfigManager.CONFIG_SUCCESS:
+			case WifiConfigManager.CONFIG_SUCCESS:
 				if (getActivity() == null) {
 					return;
 				}
 				CommonUtils.showProgressDialog(getActivity(), "", getString(R.string.config_success));
 				String tokenValue = (String) msg.obj;
 				deviceKey = tokenValue;
-				backToNetwork();
+				bindDevice(deviceKey);
 				LogUtils.e(TAG, "config success...");
 				break;
-			case GateWayConfigManager.CONFIG_FAILED:
+			case WifiConfigManager.CONFIG_FAILED:
 				LogUtils.e(TAG, "config failed...");
 				CommonUtils.dismissDialog();
 				CommonUtils.ToastMsg(getActivity(), R.string.config_failed);
 				break;
-			case GateWayConfigManager.CONNECT_SOCKET_FAILED:
+			case WifiConfigManager.DEVICE_CONNECT_FAILED:
 				LogUtils.e(TAG, "socket connect failed...");
 				break;
-			case GateWayConfigManager.SEND_MSG_FAILED:
+			case WifiConfigManager.DEVICE_SEND_FAILED:
 				LogUtils.e(TAG, "send msg failed...");
 				break;
 			default:
@@ -138,17 +134,11 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 		wakeLock = WakeLockWrapper.getWakeLockInstance(getActivity(), getClass().getSimpleName());
 		wakeLock.acquire();
 		
-		Bundle bundle = getArguments();
-		if (bundle != null) {
-			apSSID = bundle.getString("apSSID");
-		}
-		
 		wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE);
 		
 		wifiConnectUtil = new WifiConnectUtil(wifiManager);
 		
 		getActivity().registerReceiver(ssidRefreshReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-		getActivity().registerReceiver(connectionChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 	}
 	
 	@Override
@@ -170,80 +160,8 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 		rootView.findViewById(R.id.back).setOnClickListener(this);
 		rootView.findViewById(R.id.btn_exit).setOnClickListener(this);
 
-        etSsid.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (mPopupWindow == null || !mPopupWindow.isShowing()) {
-                    showPopupWindow();
-                }
-                return false;
-            }
-        });
-        etSsid.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    if (mPopupWindow == null || !mPopupWindow.isShowing()) {
-                        showPopupWindow();
-                    }
-                } else {
-                    if (mPopupWindow != null && mPopupWindow.isShowing()) {
-                        dismissPopupWindow();
-                    }
-                }
-            }
-        });
-	}
-
-    public void showPopupWindow() {
-        if (mPopupWindow == null) {
-            ListView listView = new ListView(getActivity());
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
-                    ScanResult curScanResult = (ScanResult) parent.getItemAtPosition(position);
-                    ssid = curScanResult.SSID;
-                    etSsid.setText(curScanResult.SSID);
-                    etSsid.setSelection(curScanResult.SSID.length());
-                    dismissPopupWindow();
-                }
-            });
-            mPopupWindow = new PopupWindow(getActivity());
-            mPopupWindow.setContentView(listView);
-            int width = getResources().getDisplayMetrics().widthPixels - 2 * UIUtils.dip2px(getActivity(), 10);
-            mPopupWindow.setWidth(width);
-            mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-            mPopupWindow.setFocusable(true);
-            mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#eeeeee")));
-        }
-        mPopupWindow.showAsDropDown(etSsid, 0, 0);
-    }
-
-    public void dismissPopupWindow() {
-        if (mPopupWindow != null && mPopupWindow.isShowing()) {
-            mPopupWindow.dismiss();
-        }
-    }
-
-	public synchronized void backToNetwork() {
-		String curSSID = wifiConnectUtil.getCurrentWifiSSID(getClass().getSimpleName());
-		if (!TextUtils.isEmpty(curSSID)) {
-			WifiConfiguration curConfig = wifiConnectUtil.IsExsits(curSSID);
-			if (curConfig != null) {
-				wifiManager.removeNetwork(curConfig.networkId);
-			}
-		}
-		WifiConnectUtil.enableAllAps(getActivity());
-		wifiConnectUtil.Connect(ssid, pwd, WifiConnectUtil.WifiCipherType.WIFICIPHER_WPA);
-		if (timer == null) {
-			timer = new Timer();
-			timer.schedule(new WifiRefreshRunnable(), refreshTimeDex, refreshTimeDex);
-		}
+		ssid = wifiConnectUtil.getCurrentWifiSSID(getClass().getSimpleName());
+		etSsid.setText(ssid);
 	}
 	
 	public synchronized void bindDevice(String deviceKey) {
@@ -334,8 +252,6 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 		boolean openWifi = wifiConnectUtil.OpenWifi();
 		if (openWifi) {
 			refreshCurrentSSID();
-		} else {
-			APConnectFragment.showOpenWifiDialog(getActivity());
 		}
 	}
 	
@@ -395,11 +311,10 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 				refreshTimeDex = 5000;
 			}
 			break;
+
 		case R.id.back:
-			((GateWayConfigActivity)getActivity()).backToApConnectView();
-			break;
 		case R.id.btn_exit:
-			GateWayConfigManager.getInstances().finishConfig();
+			WifiConfigManager.stopConfig();
 			MobclickAgent.onEvent(getActivity(), AnalyticsUtils.AnalyticsEventKeys.EVENT_EXIT_CONFIG);
 			ActivityUtils.animFinish(getActivity(), R.anim.slide_in_from_left, R.anim.slide_out_to_right);
 			break;
@@ -410,9 +325,8 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 	
 	
 	public void connect() {
-		GateWayConfigManager.getInstances()
-			.setGateWayMsgHandler(msgHandler)
-			.startConfig(getActivity(), ssid, pwd);
+		WifiConfigManager.setMsgHandler(msgHandler);
+		WifiConfigManager.startConfig(getActivity(), "smart", ssid, pwd);
 	}
 	
 	class WifiRefreshRunnable extends TimerTask {
@@ -509,9 +423,6 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 					}
 				} else {
 					adapter.updateDataSet(scanResults);
-                    if (mPopupWindow != null) {
-                        mPopupWindow.update();
-                    }
 				}
 			}
 //		}
@@ -534,39 +445,6 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 		}
 		
 	};
-	private BroadcastReceiver connectionChangeReceiver = new BroadcastReceiver() {
-		public void onReceive(Context context, Intent intent) {
-			if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
-				boolean success = false;
-				
-				ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-				
-				State state = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();
-				
-				if (State.CONNECTED == state) {
-					success = true;
-				}
-				if (success) {
-					String currentSSID = wifiConnectUtil.getCurrentWifiSSID(getClass().getSimpleName());
-					LogUtils.e(TAG, "connectionChangeReceiver: currentSSID: " + currentSSID + "/ apSSID: " + apSSID);
-					if (currentSSID.equals(apSSID)) {
-						if (TextUtils.isEmpty(deviceKey) && !TextUtils.isEmpty(ssid)) {
-							return;
-						}
-					}  
-					if (currentSSID.equals(ssid)) {
-						if (TextUtils.isEmpty(deviceKey)) {
-							wifiConnectUtil.Connect(apSSID, null, WifiConnectUtil.WifiCipherType.WIFICIPHER_NOPASS);
-						} else {
-							bindDevice(deviceKey);
-						}
-					}
-				}
-			} else {
-				openWifi();
-			}
-		};
-	};
 	
 	
 	public void onDestroy() {
@@ -578,7 +456,6 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 			wakeLock.release();
 		}
 		getActivity().unregisterReceiver(ssidRefreshReceiver);
-		getActivity().unregisterReceiver(connectionChangeReceiver);
 		AbsOpenApi.cancel(getActivity(), true);
 		super.onDestroy();
 	};

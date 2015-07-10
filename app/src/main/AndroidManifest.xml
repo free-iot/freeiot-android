@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
     <application
         tools:replace="android:icon,android:theme"
@@ -89,7 +90,7 @@
 
         <!-- sdk -->
         <service
-            android:name="com.pandocloud.android.config.ConnectDeviceService"
+            android:name="com.pandocloud.android.config.wifi.WifiConfigService"
             android:enabled="true"
             android:exported="false" >
         </service>
