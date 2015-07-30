@@ -326,7 +326,7 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 	
 	public void connect() {
 		WifiConfigManager.setMsgHandler(msgHandler);
-		WifiConfigManager.startConfig(getActivity(), "smart", ssid, pwd);
+		WifiConfigManager.startConfig(getActivity(), "smartlink", ssid, pwd);
 	}
 	
 	class WifiRefreshRunnable extends TimerTask {
