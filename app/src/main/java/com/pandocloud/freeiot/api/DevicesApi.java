@@ -79,6 +79,10 @@ public class DevicesApi extends AbsOpenApi {
      */
     private static final String DEVICE_CURRENT_STATUS = "/v1/devices/%s/status/current";
 
+    /**
+     * set device current status
+     */
+    private static final String DEVICE_SET_CURRENT_STATUS = "/v1/devices/%s/status";
 
     /**list devices that I have bound or authorized to me. (/v1/devices)
      * @param context
@@ -316,9 +320,9 @@ public class DevicesApi extends AbsOpenApi {
 			if (DEBUG) {
 				LogUtils.d(jsonBody);
 			}
-			post(context, 
-					String.format(getApiServerUrl() + DEVICE_SEND_COMMANDS, identifier)
-					, headerList, jsonBody, responseHandler);
+			post(context,
+                    String.format(getApiServerUrl() + DEVICE_SEND_COMMANDS, identifier)
+                    , headerList, jsonBody, responseHandler);
 		}  catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -340,5 +344,30 @@ public class DevicesApi extends AbsOpenApi {
         get(context,
                 String.format(getApiServerUrl() + DEVICE_CURRENT_STATUS, identifier),
                 headerList, null, responseHandler);
+    }
+
+    /**
+     * set device status (/v1/devices/{identifier}/status)
+     * @param context
+     * @param accessToken
+     * @param identifier
+     * @param responseHandler
+     */
+    public static void setDeviceCurrentState(Context context, String accessToken,
+          String identifier, AsyncHttpResponseHandler responseHandler)
+    {
+        List<Header> headerList = new ArrayList<Header>();
+        headerList.add(new BasicHeader(ApiKey.HeadKey.ACCESS_TOKEN, accessToken));
+
+        try
+        {
+            put(context, String.format(getApiServerUrl() + DEVICE_SET_CURRENT_STATUS, identifier),
+                    headerList, null, responseHandler);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            responseHandler.onFailure(INNER_ERROR_CODE, null, null, e);
+        }
     }
 }
