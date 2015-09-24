@@ -206,6 +206,53 @@ public class DeviceControlActivity extends BaseActivity implements OnClickListen
 			}
 		});
 
+		bridgeHelper.registerHandler("currentStatus", new BridgeHandler() {
+
+			@Override
+			public void handler(String data, final CallBackFunction function) {
+
+				DevicesApi.getDeviceCurrentState(DeviceControlActivity.this,
+						UserState.getInstances(DeviceControlActivity.this).getAccessToken(""),
+						mIdentifier, new WrapperJsonHttpResponseHandler(DeviceControlActivity.this) {
+
+							@Override
+							public void onStart() {
+								mProgressBar.setVisibility(View.VISIBLE);
+							}
+
+							@Override
+							public void onFailure(int statusCode, Header[] headers,
+												  Throwable throwable, JSONObject errorResponse) {
+								super.onFailure(statusCode, headers, throwable, errorResponse);
+							}
+
+							@Override
+							public void onSuccess(int statusCode, Header[] headers,
+												  JSONObject response) {
+								LogUtils.e(response.toString());
+								if (response.has("code")) {
+									try {
+										int code = response.getInt("code");
+										if (code != BaseResponse.CODE_SUCCESS) {
+											super.onSuccess(statusCode, headers, response);
+										} else {
+											function.onCallBack(response);
+										}
+									} catch (JSONException e) {
+										e.printStackTrace();
+									}
+								}
+							}
+
+							@Override
+							public void onFinish() {
+								mProgressBar.setVisibility(View.GONE);
+							}
+						});
+
+			}
+		});
+
 		bridgeHelper.registerHandler("getCurrentStatus", new BridgeHandler() {
 
 			@Override
