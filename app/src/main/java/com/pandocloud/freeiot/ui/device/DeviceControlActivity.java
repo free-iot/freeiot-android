@@ -307,7 +307,7 @@ public class DeviceControlActivity extends BaseActivity implements OnClickListen
 
 				DevicesApi.setDeviceCurrentState(DeviceControlActivity.this,
 						UserState.getInstances(DeviceControlActivity.this).getAccessToken(""),
-						mIdentifier, new WrapperJsonHttpResponseHandler(DeviceControlActivity.this){
+						mIdentifier,data, new WrapperJsonHttpResponseHandler(DeviceControlActivity.this){
 
 							@Override
 							public void onStart() {

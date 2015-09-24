@@ -354,7 +354,7 @@ public class DevicesApi extends AbsOpenApi {
      * @param responseHandler
      */
     public static void setDeviceCurrentState(Context context, String accessToken,
-          String identifier, AsyncHttpResponseHandler responseHandler)
+          String identifier,String jsonBody, AsyncHttpResponseHandler responseHandler)
     {
         List<Header> headerList = new ArrayList<Header>();
         headerList.add(new BasicHeader(ApiKey.HeadKey.ACCESS_TOKEN, accessToken));
@@ -362,7 +362,7 @@ public class DevicesApi extends AbsOpenApi {
         try
         {
             put(context, String.format(getApiServerUrl() + DEVICE_SET_CURRENT_STATUS, identifier),
-                    headerList, null, responseHandler);
+                    headerList, jsonBody, responseHandler);
         }
         catch (Exception e)
         {
