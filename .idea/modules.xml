@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Androidfreeiot.iml" filepath="$PROJECT_DIR$/Androidfreeiot.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/freeiot-android.iml" filepath="$PROJECT_DIR$/freeiot-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/xwalk_core_library/xwalk_core_library.iml" filepath="$PROJECT_DIR$/xwalk_core_library/xwalk_core_library.iml" />
     </modules>
   </component>

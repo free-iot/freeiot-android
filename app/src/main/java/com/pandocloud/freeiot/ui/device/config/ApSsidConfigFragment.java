@@ -240,7 +240,7 @@ public class ApSsidConfigFragment extends Fragment implements OnClickListener {
 	
 
 	public void initData() {
-		msgHandler = new GateWayHandler(getActivity(), mHandler);
+		msgHandler = new WifiConfigMessageHandler(mHandler);
 		if (wifiManager.getWifiState() == WifiManager.WIFI_STATE_DISABLED) {
 			openWifi();
 		} else {
