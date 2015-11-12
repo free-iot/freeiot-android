@@ -38,7 +38,7 @@ import com.umeng.analytics.MobclickAgent;
 
 public class RegisterActivity extends BaseActivity implements OnClickListener {
 
-	public static final String MOBILE_REGX = "^((\\+86)|(86))?((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
+	public static final String MOBILE_REGX = "^((\\+86)|(86))?((13[0-9])|(15[^4,\\D])|(18[0-9])|(17[0-9]))\\d{8}$";
 	
 	private EditText mPhoneEditView;
 
